@@ -190,7 +190,7 @@ public class Cache implements Closeable, Flushable {
     return ByteString.encodeUtf8(url.toString()).md5().hex();
   }
 
-  public Response get(String key) {
+  public Response get(String key, Request request) {
     DiskLruCache.Snapshot snapshot;
     Entry entry;
     try {
@@ -221,7 +221,7 @@ public class Cache implements Closeable, Flushable {
   }
 
   @Nullable Response get(Request request) {
-    String key = key(request.url());
+    String key = key(request.url(), request);
     return get(key);
   }
 
