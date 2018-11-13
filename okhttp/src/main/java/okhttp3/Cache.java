@@ -221,8 +221,8 @@ public class Cache implements Closeable, Flushable {
   }
 
   @Nullable Response get(Request request) {
-    String key = key(request.url(), request);
-    return get(key);
+    String key = key(request.url());
+    return get(key, request);
   }
 
   public @Nullable CacheRequest put(String key, Response response) {
